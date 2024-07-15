@@ -3,153 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>국내 투자자 투자실태 조사</title>
+    <title>국내 투자자 실태 조사</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f0f0;
-            padding: 20px;
-        }
-        .container {
+            font-family: Arial, sans-serif;
             max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 30px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         h1 {
             text-align: center;
             color: #333;
         }
         form {
-            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         label {
             font-weight: bold;
-            display: block;
-            margin-bottom: 8px;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
         input[type="radio"], input[type="checkbox"] {
             margin-right: 10px;
         }
-        select, input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 16px;
-        }
-        button {
+        button[type="submit"] {
             background-color: #4CAF50;
             color: white;
-            padding: 12px 24px;
+            padding: 10px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 18px;
-            margin-top: 20px;
+            float: right;
         }
-        button:hover {
+        button[type="submit"]:hover {
             background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>국내 투자자 투자실태 조사</h1>
-        <form id="surveyForm" action="#">
-            <label for="gender">1. 성별을 선택해 주세요:</label><br>
-            <input type="radio" id="male" name="gender" value="male" required>
+    <h1>국내 투자자 실태 조사</h1>
+    <form action="submit.php" method="post">
+        <p>
+            <label for="gender">성별:</label>
+            <input type="radio" id="male" name="gender" value="male">
             <label for="male">남성</label>
             <input type="radio" id="female" name="gender" value="female">
-            <label for="female">여성</label><br><br>
-
-            <label for="age">2. 연령대를 선택해 주세요:</label><br>
-            <select id="age" name="age" required>
-                <option value="">선택해 주세요</option>
+            <label for="female">여성</label>
+        </p>
+        <p>
+            <label for="age">연령대:</label>
+            <select id="age" name="age">
                 <option value="10s">10대</option>
                 <option value="20s">20대</option>
                 <option value="30s">30대</option>
                 <option value="40s">40대</option>
                 <option value="50s+">50대 이상</option>
-            </select><br><br>
-
-            <label for="occupation">3. 직업을 선택해 주세요:</label><br>
-            <select id="occupation" name="occupation" required>
-                <option value="">선택해 주세요</option>
+            </select>
+        </p>
+        <p>
+            <label for="occupation">직업군:</label>
+            <select id="occupation" name="occupation">
                 <option value="student">학생</option>
                 <option value="employee">회사원</option>
                 <option value="professional">전문직</option>
                 <option value="other">기타</option>
-            </select><br><br>
-
-            <label>4. 선호하는 투자 종목을 선택해 주세요 (복수 선택 가능):</label><br>
-            <input type="checkbox" id="stock" name="investment" value="stock">
-            <label for="stock">국내 주식</label><br>
-            <input type="checkbox" id="foreignStock" name="investment" value="foreignStock">
-            <label for="foreignStock">해외 주식</label><br>
-            <input type="checkbox" id="fund" name="investment" value="fund">
-            <label for="fund">펀드</label><br>
-            <input type="checkbox" id="realEstate" name="investment" value="realEstate">
-            <label for="realEstate">부동산</label><br>
-            <input type="checkbox" id="crypto" name="investment" value="crypto">
-            <label for="crypto">가상화폐</label><br><br>
-
-            <label for="assetSize">5. 보유하고 계신 자산의 총 규모를 선택해 주세요:</label><br>
-            <select id="assetSize" name="assetSize" required>
-                <option value="">선택해 주세요</option>
-                <option value="under10m">1천만원 이하</option>
-                <option value="under50m">5천만원 이하</option>
-                <option value="under100m">1억원 이하</option>
-                <option value="over100m">1억원 초과</option>
-                <option value="over500m">5억원 초과</option>
-            </select><br><br>
-
-            <label for="investmentRatio">6. 이상적인 투자 비중을 선택해 주세요:</label><br>
-            <select id="investmentRatio" name="investmentRatio" required>
-                <option value="">선택해 주세요</option>
-                <option value="under10%">10% 이하</option>
-                <option value="under30%">30% 이하</option>
-                <option value="under50%">50% 이하</option>
-                <option value="under70%">70% 이하</option>
-                <option value="over100%">100% 이상</option>
-            </select><br><br>
-
-            <label for="investmentPerformance">7. 투자 수익 현황을 선택해 주세요:</label><br>
-            <select id="investmentPerformance" name="investmentPerformance" required>
-                <option value="">선택해 주세요</option>
-                <option value="1-5%">1-5%</option>
-                <option value="6-10%">6-10%</option>
-                <option value="11-20%">11-20%</option>
-                <option value="over20%">20% 이상</option>
-                <option value="loss">손실</option>
-            </select><br><br>
-
-            <label for="investmentMethod">8. 주식 투자 시 선호하는 선택 방법을 선택해 주세요:</label><br>
-            <select id="investmentMethod" name="investmentMethod" required>
-                <option value="">선택해 주세요</option>
-                <option value="marketNews">증시 시황 (뉴스)</option>
-                <option value="recommendations">증권사 직원 및 자산 운용사의 추천</option>
-                <option value="chartAnalysis">차트를 통한 분석</option>
-            </select><br><br>
-
-            <label for="freeSharesAgreement">9. 공모주 무료 지급 관련 동의 여부를 선택해 주세요:</label><br>
-            <input type="radio" id="agree" name="freeSharesAgreement" value="agree" required>
-            <label for="agree">동의합니다.</label>
-            <input type="radio" id="disagree" name="freeSharesAgreement" value="disagree">
-            <label for="disagree">동의하지 않습니다.</label><br><br>
-
-            <label for="name">10. 이름을 입력해 주세요:</label><br>
-            <input type="text" id="name" name="name" required><br><br>
-
-            <label for="contact">11. 연락처를 입력해 주세요:</label><br>
-            <input type="text" id="contact" name="contact" required><br><br>
-
-            <button type="submit">제출</button>
-        </form>
-    </div>
+            </select>
+        </p>
+        <p>
+            <label for="investment">선호하는 투자 종목:</label><br>
+            <input type="checkbox" id="stock" name="investment[]" value="stock">
+            <label for="stock">국내 주식</label>
+            <input type="checkbox" id="fund" name="investment[]" value="fund">
+            <label for="fund">펀드</label>
+            <input type="checkbox" id="realestate" name="investment[]" value="realestate">
+            <label for="realestate">부동산</label>
+            <input type="checkbox" id="crypto" name="investment[]" value="crypto">
+            <label for="crypto">가상화폐</label>
+            <input type="checkbox" id="ipo" name="investment[]" value="ipo">
+            <label for="ipo">공모주 (무료 지급)</label>
+        </p>
+        <p>
+            <label for="asset">보유 자산 규모:</label>
+            <select id="asset" name="asset">
+                <option value="under_10m">1천만원 이하</option>
+                <option value="under_50m">5천만원 이하</option>
+                <option value="under_100m">1억원 이하</option>
+                <option value="over_100m">1억원 이상</option>
+                <option value="over_500m">5억원 이상</option>
+            </select>
+        </p>
+        <p>
+            <label for="investment_ratio">이상적인 투자 비중:</label>
+            <select id="investment_ratio" name="investment_ratio">
+                <option value="under_10">10% 이하</option>
+                <option value="under_30">30% 이하</option>
+                <option value="under_50">50% 이하</option>
+                <option value="under_70">70% 이하</option>
+                <option value="over_100">100% 이상</option>
+            </select>
+        </p>
+        <p>
+            <label for="investment_experience">투자 경험 수익 현황:</label><br>
+            <input type="radio" id="profit_1" name="investment_experience" value="1-5%">
+            <label for="profit_1">1-5%</label>
+            <input type="radio" id="profit_2" name="investment_experience" value="6-10%">
+            <label for="profit_2">6-10%</label>
+            <input type="radio" id="profit_3" name="investment_experience" value="10-20%">
+            <label for="profit_3">10-20%</label>
+            <input type="radio" id="profit_4" name="investment_experience" value="over_20%">
+            <label for="profit_4">20% 이상</label>
+            <input type="radio" id="loss" name="investment_experience" value="loss">
+            <label for="loss">손실</label>
+        </p>
+        <p>
+            <label for="investment_method">주식 투자 선택 방법:</label><br>
+            <input type="radio" id="news" name="investment_method" value="news">
+            <label for="news">증시시황(뉴스)</label>
+            <input type="radio" id="recommendation" name="investment_method" value="recommendation">
+            <label for="recommendation">증권사 추천</label>
+            <input type="radio" id="chart" name="investment_method" value="chart">
+            <label for="chart">차트 분석</label>
+        </p>
+        <p>
+            <label for="free_ipo">공모주 무료 지급을 위한 정보 입력:</label><br>
+            <label for="name">이름:</label>
+            <input type="text" id="name" name="name"><br>
+            <label for="contact">연락처:</label>
+            <input type="text" id="contact" name="contact">
+        </p>
+        <button type="submit">제출</button>
+    </form>
 </body>
 </html>
