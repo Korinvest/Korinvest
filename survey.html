@@ -4,18 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>국내 투자자 투자실태 조사</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        select, input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <h1>국내 투자자 투자실태 조사</h1>
-    <form id="surveyForm" action="#">
-        <p>
+    <div class="container">
+        <h1>국내 투자자 투자실태 조사</h1>
+        <form id="surveyForm" action="#">
             <label for="gender">1. 성별을 선택해 주세요:</label><br>
             <input type="radio" id="male" name="gender" value="male" required>
             <label for="male">남성</label>
             <input type="radio" id="female" name="gender" value="female">
-            <label for="female">여성</label>
-        </p>
-        <p>
+            <label for="female">여성</label><br><br>
+
             <label for="age">2. 연령대를 선택해 주세요:</label><br>
             <select id="age" name="age" required>
                 <option value="">선택해 주세요</option>
@@ -24,9 +75,8 @@
                 <option value="30s">30대</option>
                 <option value="40s">40대</option>
                 <option value="50s+">50대 이상</option>
-            </select>
-        </p>
-        <p>
+            </select><br><br>
+
             <label for="occupation">3. 직업을 선택해 주세요:</label><br>
             <select id="occupation" name="occupation" required>
                 <option value="">선택해 주세요</option>
@@ -34,9 +84,8 @@
                 <option value="employee">회사원</option>
                 <option value="professional">전문직</option>
                 <option value="other">기타</option>
-            </select>
-        </p>
-        <p>
+            </select><br><br>
+
             <label>4. 선호하는 투자 종목을 선택해 주세요 (복수 선택 가능):</label><br>
             <input type="checkbox" id="stock" name="investment" value="stock">
             <label for="stock">국내 주식</label><br>
@@ -47,9 +96,8 @@
             <input type="checkbox" id="realEstate" name="investment" value="realEstate">
             <label for="realEstate">부동산</label><br>
             <input type="checkbox" id="crypto" name="investment" value="crypto">
-            <label for="crypto">가상화폐</label>
-        </p>
-        <p>
+            <label for="crypto">가상화폐</label><br><br>
+
             <label for="assetSize">5. 보유하고 계신 자산의 총 규모를 선택해 주세요:</label><br>
             <select id="assetSize" name="assetSize" required>
                 <option value="">선택해 주세요</option>
@@ -58,9 +106,8 @@
                 <option value="under100m">1억원 이하</option>
                 <option value="over100m">1억원 초과</option>
                 <option value="over500m">5억원 초과</option>
-            </select>
-        </p>
-        <p>
+            </select><br><br>
+
             <label for="investmentRatio">6. 이상적인 투자 비중을 선택해 주세요:</label><br>
             <select id="investmentRatio" name="investmentRatio" required>
                 <option value="">선택해 주세요</option>
@@ -69,9 +116,8 @@
                 <option value="under50%">50% 이하</option>
                 <option value="under70%">70% 이하</option>
                 <option value="over100%">100% 이상</option>
-            </select>
-        </p>
-        <p>
+            </select><br><br>
+
             <label for="investmentPerformance">7. 투자 수익 현황을 선택해 주세요:</label><br>
             <select id="investmentPerformance" name="investmentPerformance" required>
                 <option value="">선택해 주세요</option>
@@ -80,35 +126,30 @@
                 <option value="11-20%">11-20%</option>
                 <option value="over20%">20% 이상</option>
                 <option value="loss">손실</option>
-            </select>
-        </p>
-        <p>
+            </select><br><br>
+
             <label for="investmentMethod">8. 주식 투자 시 선호하는 선택 방법을 선택해 주세요:</label><br>
             <select id="investmentMethod" name="investmentMethod" required>
                 <option value="">선택해 주세요</option>
                 <option value="marketNews">증시 시황 (뉴스)</option>
                 <option value="recommendations">증권사 직원 및 자산 운용사의 추천</option>
                 <option value="chartAnalysis">차트를 통한 분석</option>
-            </select>
-        </p>
-        <p>
+            </select><br><br>
+
             <label for="freeSharesAgreement">9. 공모주 무료 지급 관련 동의 여부를 선택해 주세요:</label><br>
             <input type="radio" id="agree" name="freeSharesAgreement" value="agree" required>
-            <label for="agree">동의합니다.</label><br>
+            <label for="agree">동의합니다.</label>
             <input type="radio" id="disagree" name="freeSharesAgreement" value="disagree">
-            <label for="disagree">동의하지 않습니다.</label>
-        </p>
-        <p>
+            <label for="disagree">동의하지 않습니다.</label><br><br>
+
             <label for="name">10. 이름을 입력해 주세요:</label><br>
-            <input type="text" id="name" name="name" required>
-        </p>
-        <p>
+            <input type="text" id="name" name="name" required><br><br>
+
             <label for="contact">11. 연락처를 입력해 주세요:</label><br>
-            <input type="text" id="contact" name="contact" required>
-        </p>
-        <p>
+            <input type="text" id="contact" name="contact" required><br><br>
+
             <button type="submit">제출</button>
-        </p>
-    </form>
+        </form>
+    </div>
 </body>
 </html>
