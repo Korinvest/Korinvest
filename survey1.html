@@ -3,125 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>금융거래 및 투자실태 설문조사</title>
+    <title>국내 투자자 실태조사</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
             max-width: 600px;
-            margin: auto;
-            background: #fff;
+            margin: 0 auto;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #333;
         }
         label {
             display: block;
-            margin: 10px 0 5px;
+            margin-bottom: 10px;
         }
-        input[type="text"],
-        select {
-            width: 100%;
-            padding: 8px;
-            margin: 10px 0 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        input[type="radio"],
-        input[type="checkbox"] {
+        input[type="radio"], input[type="checkbox"] {
             margin-right: 10px;
         }
-        .btn {
-            display: block;
+        select {
             width: 100%;
-            padding: 10px;
-            border: none;
-            background: #5cb85c;
-            color: #fff;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 4px;
+            padding: 5px;
+            margin-bottom: 10px;
         }
-        .btn:hover {
-            background: #4cae4c;
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        textarea {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>금융거래 및 투자실태 설문조사</h1>
-        <p>국내 개인투자자를 대상으로 한 설문조사입니다. 설문 시간은 약 2분 정도 소요될 것으로 예상됩니다. 감사합니다.</p>
-        <form action="http://localhost:3000/submit" method="POST">
-            <label>성별을 선택해주세요.</label>
-            <input type="radio" name="gender" value="남"> 남
-            <input type="radio" name="gender" value="여"> 여
-
-            <label>연령대를 선택해주세요.</label>
-            <input type="radio" name="age" value="10대"> 10대
-            <input type="radio" name="age" value="20대"> 20대
-            <input type="radio" name="age" value="30대"> 30대
-            <input type="radio" name="age" value="40대"> 40대
-            <input type="radio" name="age" value="50대 이상"> 50대 이상
-
-            <label>직업군을 선택해주세요.</label>
-            <input type="radio" name="occupation" value="학생"> 학생
-            <input type="radio" name="occupation" value="회사원"> 회사원
-            <input type="radio" name="occupation" value="전문직"> 전문직
-            <input type="radio" name="occupation" value="기타"> 기타
-            <input type="text" name="other_occupation" placeholder="기타 직업 입력">
-
-            <label>선호하는 투자종목을 선택해주세요.</label>
+    <h2>국내 투자자 실태조사</h2>
+    <form id="surveyForm">
+        <label>1. 성별을 선택해 주세요:
+            <input type="radio" name="gender" value="male"> 남성
+            <input type="radio" name="gender" value="female"> 여성
+        </label>
+        <label>2. 연령대를 선택해 주세요:
+            <select name="age">
+                <option value="10s">10대</option>
+                <option value="20s">20대</option>
+                <option value="30s">30대</option>
+                <option value="40s">40대</option>
+                <option value="50s+">50대 이상</option>
+            </select>
+        </label>
+        <label>3. 직업군을 입력해 주세요:
+            <input type="text" name="occupation">
+        </label>
+        <label>4. 보유하고 계신 자산의 총 규모를 선택해 주세요:
+            <select name="asset_size">
+                <option value="less_than_10m">1천만원 이하</option>
+                <option value="less_than_50m">5천만원 이하</option>
+                <option value="less_than_100m">1억원 이하</option>
+                <option value="more_than_100m">1억원 이상</option>
+                <option value="more_than_500m">5억원 이상</option>
+            </select>
+        </label>
+        <label>5. 주로 투자하는 자산 종목을 선택해 주세요:
             <input type="checkbox" name="investment_preference" value="국내주식"> 국내주식
             <input type="checkbox" name="investment_preference" value="해외주식"> 해외주식
-            <input type="checkbox" name="investment_preference" value="펀드"> 펀드(주식형, 채권형 등)
+            <input type="checkbox" name="investment_preference" value="펀드"> 펀드
             <input type="checkbox" name="investment_preference" value="부동산"> 부동산
             <input type="checkbox" name="investment_preference" value="가상화폐"> 가상화폐
+        </label>
+        <label>6. 현재 투자 수익 현황을 선택해 주세요:
+            <input type="radio" name="investment_profit" value="1_5%"> 1-5%
+            <input type="radio" name="investment_profit" value="6_10%"> 6-10%
+            <input type="radio" name="investment_profit" value="11_20%"> 11-20%
+            <input type="radio" name="investment_profit" value="over_20%"> 20% 이상
+            <input type="radio" name="investment_profit" value="loss"> 손실
+        </label>
+        <label>7. 주식 투자 시 선택하는 방법을 선택해 주세요:
+            <input type="radio" name="investment_method" value="market_news"> 증시시황(뉴스)
+            <input type="radio" name="investment_method" value="broker_recommendation"> 증권사 직원 및 자산운용사의 추천
+            <input type="radio" name="investment_method" value="chart_analysis"> 차트를 통한 분석
+        </label>
+        <label>8. 기타 의견이나 건의 사항을 자유롭게 작성해 주세요:
+            <textarea name="comments" rows="4"></textarea>
+        </label>
+        <input type="submit" value="제출">
+    </form>
 
-            <label>보유하고 계신 자산의 총 규모를 선택해주세요.</label>
-            <select name="asset_size">
-                <option value="1천만원 이하">1천만원 이하</option>
-                <option value="5천만원 이하">5천만원 이하</option>
-                <option value="1억원 이하">1억원 이하</option>
-                <option value="1억원 이상">1억원 이상</option>
-                <option value="5억원 이상">5억원 이상</option>
-            </select>
+    <div id="responseMessage"></div>
 
-            <label>보유 자산에서 이상적인 투자 비중을 선택해주세요.</label>
-            <select name="investment_ratio">
-                <option value="10% 이하">10% 이하</option>
-                <option value="30% 이하">30% 이하</option>
-                <option value="50% 이하">50% 이하</option>
-                <option value="70% 이하">70% 이하</option>
-                <option value="100% 이상">100% 이상</option>
-            </select>
+    <script>
+        const form = document.getElementById('surveyForm');
+        const responseMessage = document.getElementById('responseMessage');
 
-            <label>투자를 진행 중이시다면, 수익 현황을 선택해주세요.</label>
-            <select name="profit_status">
-                <option value="1-5%">1-5%</option>
-                <option value="6–10%">6–10%</option>
-                <option value="10-20%">10-20%</option>
-                <option value="20% 이상">20% 이상</option>
-                <option value="손실">손실</option>
-            </select>
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(form);
+            const surveyData = {};
+            formData.forEach((value, key) => {
+                if (!surveyData[key]) {
+                    surveyData[key] = value;
+                } else {
+                    if (!Array.isArray(surveyData[key])) {
+                        surveyData[key] = [surveyData[key]];
+                    }
+                    surveyData[key].push(value);
+                }
+            });
 
-            <label>주식 투자 시 선택 방법을 선택해주세요.</label>
-            <select name="investment_method">
-                <option value="증시 시황(뉴스)">증시 시황(뉴스)</option>
-                <option value="증권사 직원 및 자산운용사의 추천">증권사 직원 및 자산운용사의 추천</option>
-                <option value="차트를 통한 분석">차트를 통한 분석</option>
-            </select>
-
-            <button type="submit" class="btn">제출</button>
-        </form>
-    </div>
+            // 설문 데이터를 서버로 전송하는 방법 (AJAX 등 사용 가능)
+            fetch('http://yourserver.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(surveyData),
+            })
+            .then(response => response.text())
+            .then(message => {
+                responseMessage.textContent = message;
+                form.reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
 </body>
 </html>
