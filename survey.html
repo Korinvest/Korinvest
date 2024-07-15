@@ -1,37 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>설문조사</title>
+    <title>국내 투자자 투자실태 조사</title>
 </head>
 <body>
-    <h2>설문조사</h2>
-    <form action="/submit" method="POST">
-        <label>성별:
-            <input type="radio" name="gender" value="male"> 남성
-            <input type="radio" name="gender" value="female"> 여성
-        </label><br>
-        <label>연령대:
-            <select name="age">
+    <h1>국내 투자자 투자실태 조사</h1>
+    <form id="surveyForm" action="#">
+        <p>
+            <label for="gender">1. 성별을 선택해 주세요:</label><br>
+            <input type="radio" id="male" name="gender" value="male" required>
+            <label for="male">남성</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">여성</label>
+        </p>
+        <p>
+            <label for="age">2. 연령대를 선택해 주세요:</label><br>
+            <select id="age" name="age" required>
+                <option value="">선택해 주세요</option>
                 <option value="10s">10대</option>
                 <option value="20s">20대</option>
                 <option value="30s">30대</option>
                 <option value="40s">40대</option>
                 <option value="50s+">50대 이상</option>
             </select>
-        </label><br>
-        <label>직업군:
-            <input type="text" name="occupation">
-        </label><br>
-        <label>선호하는 투자종목:
-            <input type="checkbox" name="investment_preference" value="국내주식"> 국내주식
-            <input type="checkbox" name="investment_preference" value="해외주식"> 해외주식
-            <input type="checkbox" name="investment_preference" value="펀드"> 펀드
-            <input type="checkbox" name="investment_preference" value="부동산"> 부동산
-            <input type="checkbox" name="investment_preference" value="가상화폐"> 가상화폐
-        </label><br>
-        <input type="submit" value="제출">
+        </p>
+        <p>
+            <label for="occupation">3. 직업을 선택해 주세요:</label><br>
+            <select id="occupation" name="occupation" required>
+                <option value="">선택해 주세요</option>
+                <option value="student">학생</option>
+                <option value="employee">회사원</option>
+                <option value="professional">전문직</option>
+                <option value="other">기타</option>
+            </select>
+        </p>
+        <p>
+            <label>4. 선호하는 투자 종목을 선택해 주세요 (복수 선택 가능):</label><br>
+            <input type="checkbox" id="stock" name="investment" value="stock">
+            <label for="stock">국내 주식</label><br>
+            <input type="checkbox" id="foreignStock" name="investment" value="foreignStock">
+            <label for="foreignStock">해외 주식</label><br>
+            <input type="checkbox" id="fund" name="investment" value="fund">
+            <label for="fund">펀드</label><br>
+            <input type="checkbox" id="realEstate" name="investment" value="realEstate">
+            <label for="realEstate">부동산</label><br>
+            <input type="checkbox" id="crypto" name="investment" value="crypto">
+            <label for="crypto">가상화폐</label>
+        </p>
+        <p>
+            <label for="assetSize">5. 보유하고 계신 자산의 총 규모를 선택해 주세요:</label><br>
+            <select id="assetSize" name="assetSize" required>
+                <option value="">선택해 주세요</option>
+                <option value="under10m">1천만원 이하</option>
+                <option value="under50m">5천만원 이하</option>
+                <option value="under100m">1억원 이하</option>
+                <option value="over100m">1억원 초과</option>
+                <option value="over500m">5억원 초과</option>
+            </select>
+        </p>
+        <p>
+            <label for="investmentRatio">6. 이상적인 투자 비중을 선택해 주세요:</label><br>
+            <select id="investmentRatio" name="investmentRatio" required>
+                <option value="">선택해 주세요</option>
+                <option value="under10%">10% 이하</option>
+                <option value="under30%">30% 이하</option>
+                <option value="under50%">50% 이하</option>
+                <option value="under70%">70% 이하</option>
+                <option value="over100%">100% 이상</option>
+            </select>
+        </p>
+        <p>
+            <label for="investmentPerformance">7. 투자 수익 현황을 선택해 주세요:</label><br>
+            <select id="investmentPerformance" name="investmentPerformance" required>
+                <option value="">선택해 주세요</option>
+                <option value="1-5%">1-5%</option>
+                <option value="6-10%">6-10%</option>
+                <option value="11-20%">11-20%</option>
+                <option value="over20%">20% 이상</option>
+                <option value="loss">손실</option>
+            </select>
+        </p>
+        <p>
+            <label for="investmentMethod">8. 주식 투자 시 선호하는 선택 방법을 선택해 주세요:</label><br>
+            <select id="investmentMethod" name="investmentMethod" required>
+                <option value="">선택해 주세요</option>
+                <option value="marketNews">증시 시황 (뉴스)</option>
+                <option value="recommendations">증권사 직원 및 자산 운용사의 추천</option>
+                <option value="chartAnalysis">차트를 통한 분석</option>
+            </select>
+        </p>
+        <p>
+            <label for="freeSharesAgreement">9. 공모주 무료 지급 관련 동의 여부를 선택해 주세요:</label><br>
+            <input type="radio" id="agree" name="freeSharesAgreement" value="agree" required>
+            <label for="agree">동의합니다.</label><br>
+            <input type="radio" id="disagree" name="freeSharesAgreement" value="disagree">
+            <label for="disagree">동의하지 않습니다.</label>
+        </p>
+        <p>
+            <label for="name">10. 이름을 입력해 주세요:</label><br>
+            <input type="text" id="name" name="name" required>
+        </p>
+        <p>
+            <label for="contact">11. 연락처를 입력해 주세요:</label><br>
+            <input type="text" id="contact" name="contact" required>
+        </p>
+        <p>
+            <button type="submit">제출</button>
+        </p>
     </form>
 </body>
 </html>
